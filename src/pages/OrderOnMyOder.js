@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ToastAndroid, View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, Picker, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
+import { ToastAndroid, View, Text, ImageBackground, Image, FlatList, TouchableOpacity, Picker, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
 import axios from 'axios';
 import { IPSERVER } from './../shared/config';
 
@@ -26,8 +26,18 @@ export class OrderOnMyOrderPage extends React.Component {
         this.state = {
             sort: false,
             filter: false,
-            StatusSearching: 'Pilih Status'
+            StatusSearching: 'Pilih Status',
+            loading: true
         }
+    }
+
+    handleRefresh = () => {
+        console.log('Refresh');
+        this.setState({
+            loading: true
+        }, () => {
+            this.componentDidMount();
+        })
     }
 
     componentDidMount() {
@@ -35,9 +45,10 @@ export class OrderOnMyOrderPage extends React.Component {
         const orderId = this.props.navi.state.params;
         axios.post(`${IPSERVER}/ApapunBets/getBetCrafterByOrder`, { orderId }).then(response => {
             console.log(response.data, 'Response Get Bet')
-            this.setState({ dataCrafterBet: response.data });
+            this.setState({ dataCrafterBet: response.data, loading: false });
         }).catch(error => {
             console.log(error, 'Error Get Order Betting');
+            this.setState({ loading: false })
             return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
         });
     }
@@ -48,14 +59,126 @@ export class OrderOnMyOrderPage extends React.Component {
         })
     }
 
+    renderDataOrder(item, index) {
+        console.log(item, 'Data Order')
+        return (
+            <TouchableOpacity
+                onPress={() => { this.props.navi.navigate('OrderWithTrack'); }}
+            >
+                <View style={{
+                    height: 165,
+                    width: '100%',
+                    flexDirection: 'row',
+                    justifyContent: 'center',
+                    flex: 2,
+                    marginTop: 10
+                }}>
+
+                    <View style={{
+                        width: '37%',
+                        height: 155,
+                        backgroundColor: 'skyblue',
+                        alignSelf: 'center',
+                        borderWidth: 1,
+                        borderColor: '#d6d7da',
+                        elevation: 6,
+                    }}>
+                        <Image
+                            style={{
+                                width: '100%',
+                                height: '100%',
+                                borderRadius: 0,
+                                alignSelf: 'center'
+                            }}
+                            source={require('./../assets/images/table1_example.jpg')}
+                        />
+                    </View>
+
+                    <View style={{
+                        width: '55%',
+                        height: 150,
+                        alignSelf: 'center',
+                        flexDirection: 'column',
+                        backgroundColor: '#ffffff',
+                        shadowOffset: { width: 10, heigth: 10 },
+                        shadowRadius: 5,
+                        shadowOpacity: 1.0,
+                        borderWidth: 1,
+                        borderColor: '#d6d7da',
+                        elevation: 6,
+                    }}>
+                        <View style={{
+                            width: '100%',
+                            height: 100,
+                            flexDirection: 'row'
+                        }}>
+                            <View style={{
+                                height: 100,
+                                width: '60%',
+                                justifyContent: 'center'
+                            }}>
+                                <View style={{ alignSelf: 'center' }}>
+                                    <Text style={{ fontSize: 13, color: 'red', fontFamily: 'Quicksand-Regular' }}>{item.orderId}</Text>
+                                    <Text style={{ fontSize: 15, paddingTop: 5, fontFamily: 'Quicksand-Bold', color: 'black' }}>{item.nameProduct}</Text>
+                                    <Text style={{ fontSize: 13, paddingTop: 5, fontFamily: 'Quicksand-Regular', color: 'black' }}>Dipesan Dari : </Text>
+                                    <Text style={{ color: 'red', fontSize: 13, paddingTop: 3, fontFamily: 'Quicksand-Regular' }}>{item.typeOrder}</Text>
+                                </View>
+
+                            </View>
+                            <View style={{
+                                height: 100,
+                                width: '40%',
+                                justifyContent: 'center'
+                            }}>
+                                <Image
+                                    style={{
+                                        width: 50,
+                                        height: 50,
+                                        borderRadius: 100,
+                                        alignSelf: 'center'
+                                    }}
+                                    source={require('./../assets/images/ic_onprocess.png')}
+                                />
+                            </View>
+                        </View>
+
+
+                        <View style={{
+                            width: '100%',
+                            height: 50,
+                            flexDirection: 'row',
+                            flex: 2
+                        }}>
+                            <View style={{
+                                height: 50,
+                                width: '50%',
+                                justifyContent: 'center'
+                            }}>
+                                <Text style={{ fontSize: 13, textAlign: 'center', fontFamily: 'Quicksand-Regular', color: 'black' }}>Jumlah : {item.quantityProduct}</Text>
+                            </View>
+                            {/* <View style={{
+                            height: 50,
+                            width: '50%',
+                            justifyContent: 'center',
+                        }}>
+                            <Text style={{ fontSize: 13, textAlign: 'center', fontFamily: 'Quicksand-Bold', color: 'black' }} >Rp. 1.500.000 </Text>
+                        </View> */}
+                        </View>
+                    </View>
+                </View>
+            </TouchableOpacity>
+        )
+    }
+
 
     render() {
 
         const {
             sort,
             filter,
-            StatusSearching
-        } = this.state
+            StatusSearching,
+            dataCrafterBet
+        } = this.state;
 
         return (
             <View style={{
@@ -63,12 +186,10 @@ export class OrderOnMyOrderPage extends React.Component {
             }}>
 
                 <View style={{
-                    // marginTop: 5,
                     width: '100%',
                     height: '12.5%',
                     paddingTop: 10,
                     paddingBottom: 10,
-                    // flex : 1,
                     flexDirection: 'row',
                     backgroundColor: 'white'
                 }}>
@@ -104,7 +225,6 @@ export class OrderOnMyOrderPage extends React.Component {
                     <TouchableOpacity style={{
                         alignSelf: 'center', width: '50%',
                         height: '100%',
-                        // backgroundColor: 'blue',
                         justifyContent: 'center',
                         alignContent: 'center',
                         flexDirection: 'column'
@@ -224,9 +344,7 @@ export class OrderOnMyOrderPage extends React.Component {
                                             <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Regular', color: 'white', alignSelf: 'center' }}>Pasang Filter</Text>
                                         </TouchableOpacity>
                                     </View>
-
                                 </View>
-
                             </View>
                         </TouchableWithoutFeedback>
                         :
@@ -238,274 +356,17 @@ export class OrderOnMyOrderPage extends React.Component {
                     backgroundColor: '#eaeaea',
                     flex: 1
                 }}
-                showsVerticalScrollIndicator={false}>
+                    showsVerticalScrollIndicator={false}>
 
-                    {/* <View style={{ flex: 1, height: 250, justifyContent: 'flex-end', marginTop: 25 }}>
-                        <Image
-                            style={{
-                                width: '95%',
-                                height: '95%',
-                                borderRadius: 0,
-                                alignSelf: 'center'
-                            }}
-                            source={require('./../assets/images/pesanan_saya.png')}
-                            resizeMode='contain'
-                        />
-                    </View>
-
-                    <View style={{ flex: 1, height: 65, justifyContent: 'center' }}>
-                        <Text style={{ fontSize: 15, color: 'black', fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>PESANAN SAYA KOSONG</Text>
-                        <Text style={{ fontSize: 13, color: 'black', fontFamily: 'Quicksand-Regular', textAlign: 'center', paddingTop: 5 }}>Yuk pesan di CUSTOM, CAPTURE N GET,</Text>
-                        <Text style={{ fontSize: 13, color: 'black', fontFamily: 'Quicksand-Regular', textAlign: 'center' }}>atau di IDEA MARKET sekarang.</Text>
-
-                    </View> */}
-
-
-                    <TouchableOpacity
-                        // onPress={() => this.pressBUtton()}
-                        onPress={() => { this.props.navi.navigate('OrderWithTrack'); }}
-                    >
-                        <View style={{
-                            height: 165,
-                            width: '100%',
-                            // backgroundColor: 'blue',
-                            flexDirection: 'row',
-                            justifyContent: 'center',
-                            flex: 2,
-                            marginTop: 10
-                        }}>
-
-                            <View style={{
-                                width: '37%',
-                                height: 155,
-                                backgroundColor: 'skyblue',
-                                alignSelf: 'center',
-                                borderWidth: 1,
-                                borderColor: '#d6d7da',
-                                elevation: 6,
-                            }}>
-                                <Image
-                                    style={{
-                                        width: '100%',
-                                        height: '100%',
-                                        borderRadius: 0,
-                                        alignSelf: 'center'
-                                    }}
-                                    source={require('./../assets/images/table1_example.jpg')}
-                                />
-                            </View>
-
-
-                            <View style={{
-                                width: '55%',
-                                height: 150,
-                                alignSelf: 'center',
-                                flexDirection: 'column',
-                                backgroundColor: '#ffffff',
-                                shadowOffset: { width: 10, heigth: 10 },
-                                shadowRadius: 5,
-                                shadowOpacity: 1.0,
-                                borderWidth: 1,
-                                borderColor: '#d6d7da',
-                                elevation: 6,
-                            }}>
-
-                                <View style={{
-                                    width: '100%',
-                                    height: 100,
-                                    // backgroundColor: 'black'
-                                    // justifyContent: 'center',
-                                    flexDirection: 'row'
-                                }}>
-                                    <View style={{
-                                        height: 100,
-                                        width: '60%',
-                                        // backgroundColor: 'red',
-                                        justifyContent: 'center'
-                                    }}>
-                                        <View style={{ alignSelf: 'center' }}>
-
-                                            <Text style={{ fontSize: 13, color: 'red', fontFamily: 'Quicksand-Regular' }}>19749373437D</Text>
-                                            <Text style={{ fontSize: 15, paddingTop: 5, fontFamily: 'Quicksand-Bold', color: 'black' }}>My Own Table</Text>
-                                            <Text style={{ fontSize: 13, paddingTop: 5, fontFamily: 'Quicksand-Regular', color: 'black' }}>Dipesan Dari : </Text>
-                                            <Text style={{ color: 'red', fontSize: 13, paddingTop: 3, fontFamily: 'Quicksand-Regular' }}>Workshop</Text>
-
-                                        </View>
-
-                                    </View>
-                                    <View style={{
-                                        height: 100,
-                                        width: '40%',
-                                        // backgroundColor: 'skyblue',
-                                        justifyContent: 'center'
-                                    }}>
-                                        <Image
-                                            style={{
-                                                width: 50,
-                                                height: 50,
-                                                borderRadius: 100,
-
-                                                alignSelf: 'center',
-                                                // paddingTop:-15
-                                            }}
-                                            source={require('./../assets/images/ic_onprocess.png')}
-                                        />
-                                    </View>
-                                </View>
-
-
-                                <View style={{
-                                    width: '100%',
-                                    height: 50,
-                                    // backgroundColor: 'yellow',
-                                    flexDirection: 'row',
-                                    flex: 2
-                                    // justifyContent:'center'
-                                }}>
-                                    <View style={{
-                                        height: 50,
-                                        width: '50%',
-                                        // backgroundColor: 'red',
-                                        justifyContent: 'center'
-                                    }}>
-                                        <Text style={{ fontSize: 13, textAlign: 'center', fontFamily: 'Quicksand-Regular', color: 'black' }}>Jumlah : (2)</Text>
-                                    </View>
-                                    <View style={{
-                                        height: 50,
-                                        width: '50%',
-                                        // backgroundColor: 'blue',
-                                        justifyContent: 'center',
-                                    }}>
-                                        <Text style={{ fontSize: 13, textAlign: 'center', fontFamily: 'Quicksand-Bold', color: 'black' }} >Rp. 1.500.000 </Text>
-                                    </View>
-                                </View>
-
-
-                            </View>
-
-                        </View>
-                    </TouchableOpacity>
-
-
-                    {/* <TouchableOpacity
-                        onPress={() => this.props.navi.navigate('OrderWithTrack')}
-                    >
-                        <View style={{
-                            height: 165,
-                            width: '100%',
-                            // backgroundColor: 'blue',
-                            flexDirection: 'row',
-                            justifyContent: 'center',
-                            flex: 2,
-                            marginTop: 10
-                        }}>
-                            <View style={{
-                                width: '37%',
-                                height: 155,
-                                backgroundColor: 'skyblue',
-                                alignSelf: 'center'
-                            }}>
-                                <Image
-                                    style={{
-                                        width: '100%',
-                                        height: '100%',
-                                        borderRadius: 0,
-                                        alignSelf: 'center'
-                                    }}
-                                    source={require('./../assets/images/vans_shoes.jpg')}
-                                />
-                            </View>
-
-                            <View style={{
-                                width: '55%',
-                                height: 150,
-                                // backgroundColor: 'white',
-                                alignSelf: 'center',
-                                flexDirection: 'column',
-                                // flex: 1,
-                                // borderRadius: 20,
-                                backgroundColor: '#ffffff',
-                                // shadowColor: 'black',
-                                shadowOffset: { width: 10, heigth: 10 },
-                                shadowRadius: 5,
-                                shadowOpacity: 1.0,
-                                // borderWidth: 0.5,
-                                borderColor: '#d6d7da',
-                            }}>
-
-                                <View style={{
-                                    width: '100%',
-                                    height: 100,
-                                    flexDirection: 'row'
-                                }}>
-                                    <View style={{
-                                        height: 100,
-                                        width: '60%',
-                                        justifyContent: 'center'
-                                    }}>
-                                        <View style={{ alignSelf: 'center' }}>
-                                           
-                                            <Text style={{ fontSize: 13, color: 'red', fontFamily: 'Quicksand-Regular' }}>1934378UDJA9</Text>
-                                            <Text style={{ fontSize: 13, paddingTop: 5, fontFamily: 'Quicksand-Bold', color: 'black' }}>Vans Shoes</Text>
-                                            <Text style={{ fontSize: 13, paddingTop: 5, fontFamily: 'Quicksand-Regular', color: 'black' }}>Dipesan Dari : </Text>
-                                            <Text style={{ color: 'red', fontSize: 13, paddingTop: 3, fontFamily: 'Quicksand-Regular' }}>Seija Company</Text>
-                                          
-                                        </View>
-
-                                    </View>
-                                    <View style={{
-                                        height: 100,
-                                        width: '40%',
-                                        justifyContent: 'center'
-                                    }}>
-                                        <Image
-                                            style={{
-                                                width: 50,
-                                                height: 50,
-                                                borderRadius: 100,
-
-                                                alignSelf: 'center',
-                                            }}
-                                            source={require('./../assets/images/ic_sending.png')}
-                                        />
-                                    </View>
-
-
-                                </View>
-
-                                <View style={{
-                                    width: '100%',
-                                    height: 50,
-                                    flexDirection: 'row',
-                                    flex: 2
-                                }}>
-                                    <View style={{
-                                        height: 50,
-                                        width: '50%',
-                                        justifyContent: 'center'
-                                    }}>
-                                        <Text style={{ fontSize: 13, textAlign: 'center', fontFamily: 'Quicksand-Regular', color: 'black' }}>Jumlah : (1)</Text>
-                                    </View>
-                                    <View style={{
-                                        height: 50,
-                                        width: '50%',
-                                        justifyContent: 'center',
-                                    }}>
-                                        <Text style={{ fontSize: 13, textAlign: 'center', fontFamily: 'Quicksand-Bold', color: 'black' }} >Rp. 900.000 </Text>
-                                    </View>
-                                </View>
-
-
-                            </View>
-                        </View>
-                    </TouchableOpacity> */}
-
+                    <FlatList
+                        data={dataCrafterBet}
+                        extraData={this.state}
+                        renderItem={({ item, index }) => this.renderDataOrder(item, index)}
+                        showsHorizontalScrollIndicator={false}
+                        refreshing={this.state.loading}
+                        onRefresh={() => this.handleRefresh()}
+                    />
                 </ScrollView>
-
-
-
-
-
             </View>
         )
     }

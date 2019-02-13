@@ -30,8 +30,8 @@ export class MyOrderPage extends React.Component {
 
     componentDidMount() {
         console.log(this.props.navi.state.params, 'Props From Order Page');
-        // const orderId = this.props.navi.state.params;
-        const orderId = 'ORDER-1';
+        const orderId = this.props.navi.state.params;
+        // const orderId = 'ORDER-1';
         axios.post(`${IPSERVER}/ApapunOrders/getOrderById`, { orderId }).then(response => {
             console.log(response.data, 'Response Get Order')
             this.setState({ dataDetailOrder: response.data, }, () => {
@@ -160,7 +160,7 @@ export class MyOrderPage extends React.Component {
                                         <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', }}>Kategori</Text>
                                     </View>
                                     <View style={{ flex: 1, backgroundColor: 'white', justifyContent: 'center', marginTop: 5 }}>
-                                        <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', paddingLeft: 5 }}>{this.state.dataDetailOrder.length === 0 ? '-' : this.state.dataDetailOrder[0].ApapunSubKategoris.ApapunKategoris.name}</Text>
+                                        <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', paddingLeft: 5 }}>{this.state.dataDetailOrder.length === 0 ? '-' : this.state.dataDetailOrder[0].ApapunKategori.name}</Text>
                                     </View>
                                 </View>
 
@@ -331,7 +331,7 @@ export class MyOrderPage extends React.Component {
                                     <Text style={{ fontSize: 13, paddingTop: 3, fontFamily: 'Quicksand-Regular', color: 'black', }}>Penerima : <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Bold', color: 'black' }}>{this.state.dataDetailOrder.length === 0 ? '-' : this.state.dataDetailOrder[0].ApapunUsers.realm}</Text> </Text>
                                     <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black', paddingTop: 10 }}>{this.state.dataDetailOrder.length === 0 ? '-' : this.state.dataDetailOrder[0].noPhone}</Text>
                                     <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black', }}>{this.state.dataDetailOrder.length === 0 ? '-' : this.state.dataDetailOrder[0].ApapunUsersAddress.addressTxt}</Text>
-                                    <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black', }} >{this.state.dataDetailOrder.length === 0 ? '-' : this.state.dataDetailOrder[0].ApapunUsersAddress.ApapunDistricts.name}, {this.state.dataDetailOrder.length === 0 ? '-' : this.state.dataDetailOrder[0].ApapunUsersAddress.ApapunRegencies.name} </Text>
+                                    <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black', }} >{this.state.dataDetailOrder.length === 0 ? '-' : this.state.dataDetailOrder[0].ApapunUsersAddress.district}, {this.state.dataDetailOrder.length === 0 ? '-' :  this.state.dataDetailOrder[0].ApapunUsersAddress.province} </Text>
                                 </View>
                             </View>
                             <View style={{ flex: 1, height: 20 }} />
