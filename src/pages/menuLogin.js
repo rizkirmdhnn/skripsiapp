@@ -26,13 +26,12 @@ export class MenuLoginPage extends React.Component {
                     justifyContent: 'center'
                 }}>
                     <Image
-                        style={{ width: 200, height: 200 }}
-                        source={require('./../assets/images/apapun_logo_white.png')}
-                        resizeMode='contain'
+                        style={{ width: 300, height: 300 }}
+                        source={require('./../assets/images/ic_logo2.png')}
                     />
                     <TouchableHighlight
                         onPress={() => this.props.navigation.navigate('Login')}
-                        style={{ width: '90%', height: 50, borderRadius: 50, backgroundColor: '#ef1c25', justifyContent: 'center', marginTop: 90 }}
+                        style={{ width: '90%', height: 50, borderRadius: 50, backgroundColor: '#ef1c25', justifyContent: 'center', marginTop: 50 }}
                     >
                         <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'white', textAlign: 'center' }}>LOGIN</Text>
                     </TouchableHighlight>
@@ -42,12 +41,12 @@ export class MenuLoginPage extends React.Component {
                     >
                         <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'white', textAlign: 'center' }}>REGISTER</Text>
                     </TouchableHighlight>
-                    <TouchableHighlight
+                    {/* <TouchableHighlight
                         onPress={() => this.props.navigation.navigate('ForgotPassword')}
                         style={{ width: '90%', height: 50, borderRadius: 50, justifyContent: 'center', borderColor: 'white', borderWidth: 1, marginTop: 15 }}
                     >
                         <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'white', textAlign: 'center' }}>Lupa Password</Text>
-                    </TouchableHighlight>
+                    </TouchableHighlight> */}
                 </View >
             </ImageBackground >
         );

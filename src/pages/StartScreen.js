@@ -12,7 +12,7 @@ export class StartScreen extends React.Component {
         super(props)
 
         this.state = {
-            image: require('./../assets/images/splashscreen.jpg'),
+            image: require('./../assets/images/splashscreen1.jpg'),
             hasLoggedIn: true
         }
     }

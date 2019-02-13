@@ -394,49 +394,30 @@ export class DashboardPage extends React.Component {
                                                         loop={false}
                                                         dot={<View style={styles.formatSwiper} />}
                                                     >
-                                                        <View style={{ flexDirection: 'row' }}>
+                                                        <View style={{ flexDirection: 'column', flex: 1 }}>
                                                             <View style={styles.containerInsideProfileOne}>
-                                                                <View style={styles.containerPhoto}>
-                                                                    <View>
-                                                                        <TouchableOpacity
-                                                                            onPress={() => this.props.navigation.navigate('ProfilePage', {
-                                                                                itemId: this.state.idUser
-                                                                            })}>
-                                                                            <Image
-                                                                                style={styles.profileImage}
-                                                                                source={{ uri: `${IPSERVER}/ApapunStorageImages/images/download/${this.state.dataDashboard[0].user_image}` }}
-                                                                            />
-                                                                        </TouchableOpacity>
-                                                                    </View>
+                                                                <View>
+                                                                    <TouchableOpacity
+                                                                        onPress={() => this.props.navigation.navigate('ProfilePage', {
+                                                                            itemId: this.state.idUser
+                                                                        })}>
+                                                                        <Image
+                                                                            style={styles.profileImage}
+                                                                            source={{ uri: `${IPSERVER}/ApapunStorageImages/images/download/${this.state.dataDashboard[0].user_image}` }}
+                                                                        />
+                                                                    </TouchableOpacity>
                                                                 </View>
                                                             </View>
 
                                                             <View style={styles.containerInsideProfileTwo}>
                                                                 <View style={styles.containerUp}>
-                                                                    <View style={{ marginLeft: 10, marginTop: 15 }}>
+                                                                    <View style={{ marginLeft: 10 }}>
                                                                         <Text style={{ color: 'grey', fontSize: 13, fontFamily: 'Quicksand-Bold' }}>Hi, Welcome!</Text>
                                                                         <Text style={{ color: 'white', fontFamily: 'Quicksand-Bold', fontSize: 15 }}>{this.state.dataDashboard[0].user_name}</Text>
                                                                     </View>
                                                                 </View>
-
                                                                 <View style={styles.containerMiddleProfileTwo}>
-                                                                    <View style={{ marginLeft: 10, marginTop: 5 }}>
-                                                                        <View style={{ flex: 1 }}>
-                                                                            <Image
-                                                                                style={styles.icons}
-                                                                                source={require('./../assets/images/ic_wallet.png')}
-                                                                            />
-                                                                        </View>
-                                                                        <View style={{ flex: 1 }}>
-                                                                            <Text style={{ color: 'grey', marginTop: 2, paddingLeft: 35, fontSize: 12, fontFamily: 'Quicksand-Regular' }}>Total Apresiasi Design Anda</Text>
-                                                                            <Text style={{ color: 'grey', marginTop: 1, paddingLeft: 35, fontSize: 15, color: 'white' }}>Rp. {this.state.dataDashboard[0].user_total_apresiasi ? this.state.dataDashboard[0].user_total_apresiasi : 0}</Text>
-                                                                        </View>
-                                                                    </View>
-
-                                                                </View>
-
-                                                                <View style={styles.containerBottomProfileTwo}>
-                                                                    <View style={{ marginLeft: 10, marginTop: 7 }}>
+                                                                    <View >
                                                                         <View style={{ flex: 1 }}>
                                                                             <Image
                                                                                 style={styles.icons}
@@ -449,53 +430,53 @@ export class DashboardPage extends React.Component {
                                                                         </View>
                                                                     </View>
                                                                 </View>
+                                                                <View style={styles.containerBottomProfileTwo}>
+                                                                    <TouchableOpacity style={{ flexDirection: 'row' }}
+                                                                        onPress={() => {
+                                                                            this.props.navigation.navigate('CrafterMyOrder');
+                                                                            this.setState(({ show }) => ({
+                                                                                show: !show,
+                                                                            }));
+                                                                        }}>
+                                                                        <View>
+                                                                            <Image
+                                                                                style={styles.icons}
+                                                                                source={require('./../assets/images/sidemenu/page-sidemenu/dafpes.png')}
+                                                                            />
+                                                                        </View>
+                                                                        <View style={{ flex: 1, justifyContent: 'center', marginLeft: 4 }}>
+                                                                            <Text style={{ color: 'grey', fontSize: 15, fontFamily: 'Quicksand-Regular' }}>Daftar Pesanan</Text>
+                                                                        </View>
+                                                                    </TouchableOpacity>
+                                                                </View>
                                                             </View>
                                                         </View>
 
-                                                        <View style={{ flexDirection: 'row' }}>
+                                                        <View style={{ flexDirection: 'column', flex: 1 }}>
                                                             <View style={styles.containerInsideProfileOne}>
-                                                                <View style={styles.containerPhoto}>
-                                                                    <View>
-                                                                        <TouchableOpacity
-                                                                            onPress={() => this.props.navigation.navigate('MenuCrafter', {
-                                                                                itemId: this.state.idUser,
-                                                                                crafter_Id: this.state.idCrafter
-                                                                            })}>
-                                                                            <Image
-                                                                                style={styles.profileImage}
-                                                                                source={{ uri: `${IPSERVER}/ApapunStorageImages/images/download/${this.state.dataDashboard[1].crafter_image}` }}
-                                                                            />
-                                                                        </TouchableOpacity>
-                                                                    </View>
+                                                                <View>
+                                                                    <TouchableOpacity
+                                                                        onPress={() => this.props.navigation.navigate('MenuCrafter', {
+                                                                            itemId: this.state.idUser,
+                                                                            crafter_Id: this.state.idCrafter
+                                                                        })}>
+                                                                        <Image
+                                                                            style={styles.profileImage}
+                                                                            source={{ uri: `${IPSERVER}/ApapunStorageImages/images/download/${this.state.dataDashboard[1].crafter_image}` }}
+                                                                        />
+                                                                    </TouchableOpacity>
                                                                 </View>
                                                             </View>
 
                                                             <View style={styles.containerInsideProfileTwo}>
                                                                 <View style={styles.containerUp}>
-                                                                    <View style={{ marginLeft: 10, marginTop: 15 }}>
+                                                                    <View style={{ marginLeft: 10 }}>
                                                                         <Text style={{ color: 'grey', fontSize: 13, fontFamily: 'Quicksand-Bold' }}>Hi, Welcome!</Text>
                                                                         <Text style={{ color: 'white', fontFamily: 'Quicksand-Bold', fontSize: 15 }}>{this.state.dataDashboard[1].crafter_name}</Text>
                                                                     </View>
                                                                 </View>
-
                                                                 <View style={styles.containerMiddleProfileTwo}>
-                                                                    <View style={{ marginLeft: 10, marginTop: 5 }}>
-                                                                        <View style={{ flex: 1 }}>
-                                                                            <Image
-                                                                                style={styles.icons}
-                                                                                source={require('./../assets/images/ic_wallet.png')}
-                                                                            />
-                                                                        </View>
-                                                                        <View style={{ flex: 1 }}>
-                                                                            <Text style={{ color: 'grey', marginTop: 2, paddingLeft: 35, fontSize: 12, fontFamily: 'Quicksand-Regular' }}>Total Pemasukan Anda</Text>
-                                                                            <Text style={{ color: 'grey', marginTop: 1, paddingLeft: 35, fontSize: 15, color: 'white' }}>Rp. {this.state.dataDashboard[1].crafter_jml_pemasukan ? this.state.dataDashboard[0].crafter_jml_pemasukan : 0}</Text>
-                                                                        </View>
-                                                                    </View>
-
-                                                                </View>
-
-                                                                <View style={styles.containerBottomProfileTwo}>
-                                                                    <View style={{ marginLeft: 10, marginTop: 7 }}>
+                                                                    <View >
                                                                         <View style={{ flex: 1 }}>
                                                                             <Image
                                                                                 style={styles.icons}
@@ -503,7 +484,7 @@ export class DashboardPage extends React.Component {
                                                                             />
                                                                         </View>
                                                                         <View style={{ flex: 1 }}>
-                                                                            <Text style={{ color: 'grey', marginTop: 2, paddingLeft: 35, fontSize: 12, fontFamily: 'Quicksand-Regular' }}>Total Pesanan Anda</Text>
+                                                                            <Text style={{ color: 'grey', marginTop: 2, paddingLeft: 35, fontSize: 12, fontFamily: 'Quicksand-Regular' }}>Total Design Anda</Text>
                                                                             <Text style={{ color: 'grey', marginTop: 1, paddingLeft: 35, fontSize: 15, color: 'white', fontFamily: 'Quicksand-Regular' }}>{this.state.dataDashboard[1].crafter_jml_pesanan} Pesanan</Text>
                                                                         </View>
                                                                     </View>
@@ -518,47 +499,30 @@ export class DashboardPage extends React.Component {
                                                         showsButtons={false}
                                                         dot={<View style={styles.formatSwiper} />}
                                                     >
-                                                        <View style={{ flexDirection: 'row' }}>
+                                                        <View style={{ flexDirection: 'column', flex: 1 }}>
                                                             <View style={styles.containerInsideProfileOne}>
-                                                                <View style={styles.containerPhoto}>
-                                                                    <View>
-                                                                        <TouchableOpacity
-                                                                            onPress={() => this.props.navigation.navigate('ProfilePage')}>
-                                                                            <Image
-                                                                                style={styles.profileImage}
-                                                                                source={{ uri: `${IPSERVER}/ApapunStorageImages/images/download/${this.state.dataDashboard[0].user_image}` }}
-                                                                            />
-                                                                        </TouchableOpacity>
-                                                                    </View>
+                                                                <View>
+                                                                    <TouchableOpacity
+                                                                        onPress={() => this.props.navigation.navigate('ProfilePage', {
+                                                                            itemId: this.state.idUser
+                                                                        })}>
+                                                                        <Image
+                                                                            style={styles.profileImage}
+                                                                            source={{ uri: `${IPSERVER}/ApapunStorageImages/images/download/${this.state.dataDashboard[0].user_image}` }}
+                                                                        />
+                                                                    </TouchableOpacity>
                                                                 </View>
                                                             </View>
 
                                                             <View style={styles.containerInsideProfileTwo}>
                                                                 <View style={styles.containerUp}>
-                                                                    <View style={{ marginLeft: 10, marginTop: 15 }}>
+                                                                    <View style={{ marginLeft: 10 }}>
                                                                         <Text style={{ color: 'grey', fontSize: 13, fontFamily: 'Quicksand-Bold' }}>Hi, Welcome!</Text>
                                                                         <Text style={{ color: 'white', fontFamily: 'Quicksand-Bold', fontSize: 15 }}>{this.state.dataDashboard[0].user_name}</Text>
                                                                     </View>
                                                                 </View>
-
                                                                 <View style={styles.containerMiddleProfileTwo}>
-                                                                    <View style={{ marginLeft: 10, marginTop: 5 }}>
-                                                                        <View style={{ flex: 1 }}>
-                                                                            <Image
-                                                                                style={styles.icons}
-                                                                                source={require('./../assets/images/ic_wallet.png')}
-                                                                            />
-                                                                        </View>
-                                                                        <View style={{ flex: 1 }}>
-                                                                            <Text style={{ color: 'grey', marginTop: 2, paddingLeft: 35, fontSize: 12, fontFamily: 'Quicksand-Regular' }}>Total Apresiasi Design Anda</Text>
-                                                                            <Text style={{ color: 'grey', marginTop: 1, paddingLeft: 35, fontSize: 15, color: 'white' }}>Rp. {this.state.dataDashboard[0].user_total_apresiasi ? this.state.dataDashboard[0].user_total_apresiasi : 0}</Text>
-                                                                        </View>
-                                                                    </View>
-
-                                                                </View>
-
-                                                                <View style={styles.containerBottomProfileTwo}>
-                                                                    <View style={{ marginLeft: 10, marginTop: 7 }}>
+                                                                    <View >
                                                                         <View style={{ flex: 1 }}>
                                                                             <Image
                                                                                 style={styles.icons}
@@ -571,12 +535,31 @@ export class DashboardPage extends React.Component {
                                                                         </View>
                                                                     </View>
                                                                 </View>
+                                                                <View style={styles.containerBottomProfileTwo}>
+                                                                    <TouchableOpacity style={{ flexDirection: 'row' }}
+                                                                        onPress={() => {
+                                                                            this.props.navigation.navigate('CrafterMyOrder');
+                                                                            this.setState(({ show }) => ({
+                                                                                show: !show,
+                                                                            }));
+                                                                        }}>
+                                                                        <View>
+                                                                            <Image
+                                                                                style={styles.icons}
+                                                                                source={require('./../assets/images/sidemenu/page-sidemenu/dafpes.png')}
+                                                                            />
+                                                                        </View>
+                                                                        <View style={{ flex: 1, justifyContent: 'center', marginLeft: 4 }}>
+                                                                            <Text style={{ color: 'grey', fontSize: 15, fontFamily: 'Quicksand-Regular' }}>Daftar Pesanan</Text>
+                                                                        </View>
+                                                                    </TouchableOpacity>
+                                                                </View>
                                                             </View>
                                                         </View>
                                                     </Swiper>
                                             }
                                         </View>
-                                        <View style={styles.containerUploadIdea}>
+                                        {/* <View style={styles.containerUploadIdea}>
                                             <View style={{ flexDirection: 'row' }}>
                                                 <View style={{ flexDirection: 'column', marginTop: 10, marginLeft: 20, }}>
                                                     <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>Idea Recently Upload</Text>
@@ -608,7 +591,7 @@ export class DashboardPage extends React.Component {
                                                         />
                                                 }
                                             </View>
-                                        </View>
+                                        </View> */}
                                     </View>
                             }
                         </View>
@@ -621,142 +604,84 @@ export class DashboardPage extends React.Component {
                                 {
                                     statusMenu === 'profile' ?
                                         <View style={{ flex: 1, flexDirection: 'column' }}>
-                                            <View style={{ height: 100, padding: 15, }}>
-                                                <View style={{ flex: 1, flexDirection: 'row' }}>
-                                                    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                                                        <TouchableWithoutFeedback
-                                                            onPress={() => {
-                                                                this.props.navigation.navigate('CrafterMyOrder');
-                                                                this.setState(({ show }) => ({
-                                                                    show: !show,
-                                                                }));
-                                                            }}>
-                                                            <Image style={{ width: 50, height: 50 }}
-                                                                source={require('./../assets/images/sidemenu/page-sidemenu/daftar-pesanan.png')}
-                                                            />
-                                                        </TouchableWithoutFeedback>
-                                                    </View>
-                                                    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                                                        <TouchableWithoutFeedback
-                                                            onPress={() => {
-                                                                this.props.navigation.navigate('NotificationMenu');
-                                                                this.setState(({ show }) => ({
-                                                                    show: !show,
-                                                                }));
-                                                            }}>
-                                                            <Image style={{ width: 50, height: 50 }}
-                                                                source={require('./../assets/images/sidemenu/page-sidemenu/notifikasi.png')}
-                                                            />
-                                                        </TouchableWithoutFeedback>
-                                                    </View>
-                                                    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                                                        <TouchableWithoutFeedback
-                                                            onPress={() => {
-                                                                this.props.navigation.navigate('SettingMenu');
-                                                                this.setState(({ show }) => ({
-                                                                    show: !show,
-                                                                }));
-                                                            }}>
-                                                            <Image style={{ width: 50, height: 50 }}
-                                                                source={require('./../assets/images/sidemenu/page-sidemenu/setting.png')}
-                                                            />
-                                                        </TouchableWithoutFeedback>
-                                                    </View>
-                                                    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                                                        <TouchableWithoutFeedback
-                                                            onPress={() => {
-                                                                this.props.navigation.navigate('HelpMenu');
-                                                                this.setState(({ show }) => ({
-                                                                    show: !show,
-                                                                }));
-                                                            }}>
-                                                            <Image style={{ width: 50, height: 50 }}
-                                                                source={require('./../assets/images/sidemenu/page-sidemenu/bantuan.png')}
-                                                            />
-                                                        </TouchableWithoutFeedback>
-                                                    </View>
+                                            <View style={{ height: 70, justifyContent: 'center', alignItems: 'center' }}>
+                                                <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 20, color: 'white', textAlign: 'center' }}>{this.state.dataDashboard[0].user_name} </Text>
+                                                <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+                                                    <Image
+                                                        style={{ width: 10, height: 10, marginLeft: -5 }}
+                                                        source={require('./../assets/images/location_icon.png')}
+                                                        resizeMode='contain'
+                                                    />
+                                                    <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'white', textAlign: 'center', marginLeft: 3 }}>DKI Jakarta</Text>
                                                 </View>
                                             </View>
-                                            <View style={{ flex: 1, flexDirection: 'column' }}>
-                                                <View style={{ height: 50, justifyContent: 'center', alignItems: 'center' }}>
-                                                    <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 20, color: 'white', textAlign: 'center' }}>{this.state.dataDashboard[0].user_name} </Text>
-                                                    <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-                                                        <Image
-                                                            style={{ width: 10, height: 10, marginLeft: -5 }}
-                                                            source={require('./../assets/images/location_icon.png')}
-                                                            resizeMode='contain'
-                                                        />
-                                                        <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'white', textAlign: 'center', marginLeft: 3 }}>DKI Jakarta</Text>
+                                            <View style={{ height: 200, justifyContent: 'center', alignItems: 'center' }}>
+                                                <TouchableWithoutFeedback
+                                                    onPress={() => {
+                                                        this.props.navigation.navigate('ProfilePage', { itemId: this.state.idUser });
+                                                        this.setState(({ show }) => ({
+                                                            show: !show,
+                                                        }));
+                                                    }}
+                                                >
+                                                    <Image
+                                                        style={{ width: 170, height: 170, borderRadius: 100 }}
+                                                        source={{ uri: `${IPSERVER}/ApapunStorageImages/images/download/${this.state.dataDashboard[0].user_image}` }}
+                                                    />
+                                                </TouchableWithoutFeedback>
+                                            </View>
+                                            <View style={{ height: 107, justifyContent: 'center', alignItems: 'center' }}>
+                                                <Text style={{ fontSize: 20, fontFamily: 'Quicksand-Bold', textAlign: 'center', color: 'white' }} >PROFIL</Text>
+                                                <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', textAlign: 'center', color: 'white', paddingTop: 10 }} >Lihat dan atur segala informasi</Text>
+                                                <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', textAlign: 'center', color: 'white' }} >profil anda disini</Text>
+                                            </View>
+                                            <View style={{ height: 203 }}>
+                                                <View style={{ height: 142, flexDirection: 'row' }}>
+                                                    <View style={{ height: 75, width: '50%', justifyContent: 'center', alignItems: 'center' }}>
+                                                        <TouchableOpacity
+                                                            onPress={() => {
+                                                                this.props.navigation.navigate('ProfilePage', { itemId: this.state.idUser });
+                                                                this.setState(({ show }) => ({
+                                                                    show: !show,
+                                                                }));
+                                                            }}
+                                                        >
+                                                            <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+                                                                <Image
+                                                                    style={{ width: 40, height: 40 }}
+                                                                    source={require('./../assets/images/sidemenu/page-sidemenu/menu-profile/edit_profile.png')}
+                                                                />
+                                                                <Text style={{ marginTop: 8, textAlign: 'center', color: 'white', fontFamily: 'Quicksand-Regular', fontSize: 15 }}>Edit Profile</Text>
+                                                            </View>
+                                                        </TouchableOpacity>
                                                     </View>
-                                                </View>
-                                                <View style={{ height: 200, justifyContent: 'center', alignItems: 'center' }}>
-                                                    <TouchableWithoutFeedback
-                                                        onPress={() => {
-                                                            this.props.navigation.navigate('ProfilePage', { itemId: this.state.idUser });
-                                                            this.setState(({ show }) => ({
-                                                                show: !show,
-                                                            }));
-                                                        }}
-                                                    >
-                                                        <Image
-                                                            style={{ width: 170, height: 170, borderRadius: 100 }}
-                                                            source={{ uri: `${IPSERVER}/ApapunStorageImages/images/download/${this.state.dataDashboard[0].user_image}` }}
-                                                        />
-                                                    </TouchableWithoutFeedback>
-                                                </View>
-                                                <View style={{ height: 107, justifyContent: 'center', alignItems: 'center' }}>
-                                                    <Text style={{ fontSize: 20, fontFamily: 'Quicksand-Bold', textAlign: 'center', color: 'white' }} >PROFIL</Text>
-                                                    <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', textAlign: 'center', color: 'white', paddingTop: 10 }} >Lihat dan atur segala informasi</Text>
-                                                    <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', textAlign: 'center', color: 'white' }} >profil anda disini</Text>
-                                                </View>
-                                                <View style={{ height: 203 }}>
-                                                    <View style={{ height: 142, flexDirection: 'row' }}>
-                                                        <View style={{ height: 75, width: '50%', justifyContent: 'center', alignItems: 'center' }}>
-                                                            <TouchableOpacity
-                                                                onPress={() => {
-                                                                    this.props.navigation.navigate('ProfilePage', { itemId: this.state.idUser });
-                                                                    this.setState(({ show }) => ({
-                                                                        show: !show,
-                                                                    }));
-                                                                }}
-                                                            >
-                                                                <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-                                                                    <Image
-                                                                        style={{ width: 40, height: 40 }}
-                                                                        source={require('./../assets/images/sidemenu/page-sidemenu/menu-profile/edit_profile.png')}
-                                                                    />
-                                                                    <Text style={{ marginTop: 8, textAlign: 'center', color: 'white', fontFamily: 'Quicksand-Regular', fontSize: 15 }}>Edit Profile</Text>
-                                                                </View>
-                                                            </TouchableOpacity>
-                                                        </View>
-                                                        <View style={{ height: 75, width: '50%', justifyContent: 'center', alignItems: 'center' }}>
-                                                            <TouchableOpacity
-                                                                onPress={() => {
-                                                                    this.setState(({ show }) => ({
-                                                                        show: !show,
-                                                                    }), () => {
-                                                                        AsyncStorage.removeItem('VMDDEVELOPER', (result) => {
-                                                                            console.log(result, 'Logout');
-                                                                            OneSignal.deleteTag('userid');
-                                                                            const resetAction = StackActions.reset({
-                                                                                index: 0,
-                                                                                actions: [NavigationActions.navigate({ routeName: 'MenuLogin' })],
-                                                                            });
-                                                                            this.props.navigation.dispatch(resetAction);
+                                                    <View style={{ height: 75, width: '50%', justifyContent: 'center', alignItems: 'center' }}>
+                                                        <TouchableOpacity
+                                                            onPress={() => {
+                                                                this.setState(({ show }) => ({
+                                                                    show: !show,
+                                                                }), () => {
+                                                                    AsyncStorage.removeItem('VMDDEVELOPER', (result) => {
+                                                                        console.log(result, 'Logout');
+                                                                        OneSignal.deleteTag('userid');
+                                                                        const resetAction = StackActions.reset({
+                                                                            index: 0,
+                                                                            actions: [NavigationActions.navigate({ routeName: 'MenuLogin' })],
                                                                         });
+                                                                        this.props.navigation.dispatch(resetAction);
                                                                     });
-                                                                }}
-                                                            >
-                                                                <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-                                                                    <Image
-                                                                        style={{ width: 40, height: 40 }}
-                                                                        source={require('./../assets/images/sidemenu/page-sidemenu/menu-profile/logout.png')}
-                                                                        resizeMode='contain'
-                                                                    />
-                                                                    <Text style={{ marginTop: 8, textAlign: 'center', color: 'white', fontFamily: 'Quicksand-Regular', fontSize: 15 }}>Log Out</Text>
-                                                                </View>
-                                                            </TouchableOpacity>
-                                                        </View>
+                                                                });
+                                                            }}
+                                                        >
+                                                            <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+                                                                <Image
+                                                                    style={{ width: 40, height: 40 }}
+                                                                    source={require('./../assets/images/sidemenu/page-sidemenu/menu-profile/logout.png')}
+                                                                    resizeMode='contain'
+                                                                />
+                                                                <Text style={{ marginTop: 8, textAlign: 'center', color: 'white', fontFamily: 'Quicksand-Regular', fontSize: 15 }}>Log Out</Text>
+                                                            </View>
+                                                        </TouchableOpacity>
                                                     </View>
                                                 </View>
                                             </View>
@@ -766,69 +691,9 @@ export class DashboardPage extends React.Component {
                                             {
                                                 statusMenu === 'order' ?
                                                     <View style={{ flex: 1, flexDirection: 'column' }}>
-                                                        <View style={{ padding: 15, height: 100 }}>
-                                                            <View style={{ flex: 1, flexDirection: 'row' }}>
-                                                                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                                                                    <TouchableWithoutFeedback
-                                                                        onPress={() => {
-                                                                            this.props.navigation.navigate('CrafterMyOrder');
-                                                                            this.setState(({ show }) => ({
-                                                                                show: !show,
-                                                                            }));
-                                                                        }}
-                                                                    >
-                                                                        <Image style={{ width: 50, height: 50 }}
-                                                                            source={require('./../assets/images/sidemenu/page-sidemenu/daftar-pesanan.png')}
-                                                                        />
-                                                                    </TouchableWithoutFeedback>
-                                                                </View>
-                                                                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                                                                    <TouchableWithoutFeedback
-                                                                        onPress={() => {
-                                                                            this.props.navigation.navigate('NotificationMenu');
-                                                                            this.setState(({ show }) => ({
-                                                                                show: !show,
-                                                                            }));
-                                                                        }}
-                                                                    >
-                                                                        <Image style={{ width: 50, height: 50 }}
-                                                                            source={require('./../assets/images/sidemenu/page-sidemenu/notifikasi.png')}
-                                                                        />
-                                                                    </TouchableWithoutFeedback>
-                                                                </View>
-                                                                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                                                                    <TouchableWithoutFeedback
-                                                                        onPress={() => {
-                                                                            this.props.navigation.navigate('SettingMenu');
-                                                                            this.setState(({ show }) => ({
-                                                                                show: !show,
-                                                                            }));
-                                                                        }}
-                                                                    >
-                                                                        <Image style={{ width: 50, height: 50 }}
-                                                                            source={require('./../assets/images/sidemenu/page-sidemenu/setting.png')}
-                                                                        />
-                                                                    </TouchableWithoutFeedback>
-                                                                </View>
-                                                                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                                                                    <TouchableWithoutFeedback
-                                                                        onPress={() => {
-                                                                            this.props.navigation.navigate('HelpMenu');
-                                                                            this.setState(({ show }) => ({
-                                                                                show: !show,
-                                                                            }));
-                                                                        }}
-                                                                    >
-                                                                        <Image style={{ width: 50, height: 50 }}
-                                                                            source={require('./../assets/images/sidemenu/page-sidemenu/bantuan.png')}
-                                                                        />
-                                                                    </TouchableWithoutFeedback>
-                                                                </View>
-                                                            </View>
-                                                        </View>
                                                         {
                                                             orderStatus === 'default' ?
-                                                                <View style={{ flex: 1 }}>
+                                                                <View style={{ flex: 1, marginTop: 50 }}>
                                                                     <View style={{ height: hp('31.3%'), flexDirection: 'row', marginRight: 15, marginLeft: 15 }}>
                                                                         <View style={{ width: '50%', justifyContent: 'center', alignItems: 'center', }}>
                                                                             <Image
@@ -838,7 +703,7 @@ export class DashboardPage extends React.Component {
                                                                         </View>
                                                                         <View style={{ width: wp('50%'), flexDirection: 'column', paddingLeft: 15, paddingRight: 10, paddingTop: 7 }}>
                                                                             <Text style={{ color: 'white', fontSize: 18, fontFamily: 'Quicksand-Bold', textAlign: 'left' }}>ORDER</Text>
-                                                                            <Text style={{ color: 'white', fontSize: 14, textAlign: 'left', fontFamily: 'Quicksand-Regular', paddingTop: 5 }}>Penuhi keinginan mu sekarang juga dengan 3 fitur yang akan membuat kreasimu menjadi nyata</Text>
+                                                                            <Text style={{ color: 'white', fontSize: 14, textAlign: 'left', fontFamily: 'Quicksand-Regular', paddingTop: 5 }}>Penuhi keinginan mu sekarang juga dengan fitur custom order yang akan membuat kreasimu menjadi nyata</Text>
                                                                         </View>
                                                                     </View>
                                                                     <View style={{ flex: 1, flexDirection: 'column', paddingLeft: 13, paddingRight: 13 }}>
@@ -847,23 +712,7 @@ export class DashboardPage extends React.Component {
                                                                             onPress={() => this.OrderStatus('custom')}
                                                                         >
                                                                             <View style={{ height: 60, justifyContent: 'center', alignItems: 'center' }}>
-                                                                                <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Custom</Text>
-                                                                            </View>
-                                                                        </TouchableOpacity>
-                                                                        <View style={{ borderWidth: 1, borderColor: 'white' }} />
-                                                                        <TouchableOpacity
-                                                                            onPress={() => this.OrderStatus('capture-get')}
-                                                                        >
-                                                                            <View style={{ height: 60, justifyContent: 'center', alignItems: 'center' }}>
-                                                                                <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Capture n' Get</Text>
-                                                                            </View>
-                                                                        </TouchableOpacity>
-                                                                        <View style={{ borderWidth: 1, borderColor: 'white' }} />
-                                                                        <TouchableOpacity
-                                                                            onPress={() => this.OrderStatus('idea-market')}
-                                                                        >
-                                                                            <View style={{ height: 60, justifyContent: 'center', alignItems: 'center' }}>
-                                                                                <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Idea Market</Text>
+                                                                                <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Custom Order</Text>
                                                                             </View>
                                                                         </TouchableOpacity>
                                                                         <View style={{ borderWidth: 1, borderColor: 'white' }} />
@@ -874,7 +723,7 @@ export class DashboardPage extends React.Component {
                                                         }
                                                         {
                                                             orderStatus === 'custom' ?
-                                                                <View style={{ flex: 1 }}>
+                                                                <View style={{ flex: 1, marginTop: 50 }}>
                                                                     <View style={{ height: hp('31.3%'), flexDirection: 'row', marginRight: 15, marginLeft: 15 }}>
                                                                         <View style={{ width: '50%', justifyContent: 'center', alignItems: 'center' }}>
                                                                             <Image
@@ -884,7 +733,7 @@ export class DashboardPage extends React.Component {
                                                                         </View>
                                                                         <View style={{ width: wp('50%'), flexDirection: 'column', paddingLeft: 15, paddingRight: 10, paddingTop: 7 }}>
                                                                             <View style={{ flex: 1 }}>
-                                                                                <Text style={{ color: 'white', fontSize: 18, fontFamily: 'Quicksand-Bold', textAlign: 'left' }}>CUSTOM</Text>
+                                                                                <Text style={{ color: 'white', fontSize: 18, fontFamily: 'Quicksand-Bold', textAlign: 'left' }}>CUSTOM ORDER</Text>
                                                                                 <Text style={{ color: 'white', fontSize: 14, textAlign: 'left', fontFamily: 'Quicksand-Regular', paddingTop: 5 }}>Dengan imajinasimu dan fitur ini kamu bisa dapatkan hasil desainmu sendiri</Text>
                                                                             </View>
                                                                             <View style={{ flex: 1 }}>
@@ -917,7 +766,7 @@ export class DashboardPage extends React.Component {
                                                                             </View>
                                                                         </TouchableOpacity>
                                                                         <View style={{ borderWidth: 1, borderColor: 'white' }} />
-                                                                        <TouchableOpacity
+                                                                        {/* <TouchableOpacity
                                                                             onPress={() => this.OrderStatus('capture-get')}
                                                                         >
                                                                             <View style={{ height: 60, justifyContent: 'center', alignItems: 'center' }}>
@@ -932,7 +781,7 @@ export class DashboardPage extends React.Component {
                                                                                 <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Idea Market</Text>
                                                                             </View>
                                                                         </TouchableOpacity>
-                                                                        <View style={{ borderWidth: 1, borderColor: 'white' }} />
+                                                                        <View style={{ borderWidth: 1, borderColor: 'white' }} /> */}
                                                                     </View>
                                                                 </View>
                                                                 :
@@ -1075,67 +924,7 @@ export class DashboardPage extends React.Component {
                                                     <View style={{ flex: 1 }}>
                                                         {
                                                             statusMenu === 'crafterList' ?
-                                                                <View style={{ flex: 1, flexDirection: 'column' }}>
-                                                                    <View style={{ padding: 15, height: 100 }}>
-                                                                        <View style={{ flex: 1, flexDirection: 'row' }}>
-                                                                            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                                                                                <TouchableWithoutFeedback
-                                                                                    onPress={() => {
-                                                                                        this.props.navigation.navigate('CrafterMyOrder');
-                                                                                        this.setState(({ show }) => ({
-                                                                                            show: !show,
-                                                                                        }));
-                                                                                    }}
-                                                                                >
-                                                                                    <Image style={{ width: 50, height: 50 }}
-                                                                                        source={require('./../assets/images/sidemenu/page-sidemenu/daftar-pesanan.png')}
-                                                                                    />
-                                                                                </TouchableWithoutFeedback>
-                                                                            </View>
-                                                                            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                                                                                <TouchableWithoutFeedback
-                                                                                    onPress={() => {
-                                                                                        this.props.navigation.navigate('NotificationMenu');
-                                                                                        this.setState(({ show }) => ({
-                                                                                            show: !show,
-                                                                                        }));
-                                                                                    }}
-                                                                                >
-                                                                                    <Image style={{ width: 50, height: 50 }}
-                                                                                        source={require('./../assets/images/sidemenu/page-sidemenu/notifikasi.png')}
-                                                                                    />
-                                                                                </TouchableWithoutFeedback>
-                                                                            </View>
-                                                                            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                                                                                <TouchableWithoutFeedback
-                                                                                    onPress={() => {
-                                                                                        this.props.navigation.navigate('SettingMenu');
-                                                                                        this.setState(({ show }) => ({
-                                                                                            show: !show,
-                                                                                        }));
-                                                                                    }}
-                                                                                >
-                                                                                    <Image style={{ width: 50, height: 50 }}
-                                                                                        source={require('./../assets/images/sidemenu/page-sidemenu/setting.png')}
-                                                                                    />
-                                                                                </TouchableWithoutFeedback>
-                                                                            </View>
-                                                                            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                                                                                <TouchableWithoutFeedback
-                                                                                    onPress={() => {
-                                                                                        this.props.navigation.navigate('HelpMenu');
-                                                                                        this.setState(({ show }) => ({
-                                                                                            show: !show,
-                                                                                        }));
-                                                                                    }}
-                                                                                >
-                                                                                    <Image style={{ width: 50, height: 50 }}
-                                                                                        source={require('./../assets/images/sidemenu/page-sidemenu/bantuan.png')}
-                                                                                    />
-                                                                                </TouchableWithoutFeedback>
-                                                                            </View>
-                                                                        </View>
-                                                                    </View>
+                                                                <View style={{ flex: 1, flexDirection: 'column', marginTop: 50 }}>
                                                                     <View style={{ height: 200 }}>
                                                                         <View style={{ flexDirection: 'row', marginRight: 10, marginLeft: 15 }}>
                                                                             <View style={{ width: '50%', justifyContent: 'center', alignItems: 'center' }}>
@@ -1225,68 +1014,9 @@ export class DashboardPage extends React.Component {
                                                                     {
                                                                         statusMenu === 'crafterMenu' ?
                                                                             <View style={{ flex: 1, flexDirection: 'column' }}>
-                                                                                <View style={{ padding: 15, height: 100 }}>
-                                                                                    <View style={{ flex: 1, flexDirection: 'row' }}>
-                                                                                        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                                                                                            <TouchableWithoutFeedback
-                                                                                                onPress={() => {
-                                                                                                    this.props.navigation.navigate('CrafterMyOrder');
-                                                                                                    this.setState(({ show }) => ({
-                                                                                                        show: !show,
-                                                                                                    }));
-                                                                                                }}
-                                                                                            >
-                                                                                                <Image style={{ width: 50, height: 50 }}
-                                                                                                    source={require('./../assets/images/sidemenu/page-sidemenu/daftar-pesanan.png')}
-                                                                                                />
-                                                                                            </TouchableWithoutFeedback>
-                                                                                        </View>
-                                                                                        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                                                                                            <TouchableWithoutFeedback
-                                                                                                onPress={() => {
-                                                                                                    this.props.navigation.navigate('NotificationMenu');
-                                                                                                    this.setState(({ show }) => ({
-                                                                                                        show: !show,
-                                                                                                    }));
-                                                                                                }}
-                                                                                            >
-                                                                                                <Image style={{ width: 50, height: 50 }}
-                                                                                                    source={require('./../assets/images/sidemenu/page-sidemenu/notifikasi.png')}
-                                                                                                />
-                                                                                            </TouchableWithoutFeedback>
-                                                                                        </View>
-                                                                                        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                                                                                            <TouchableWithoutFeedback
-                                                                                                onPress={() => {
-                                                                                                    this.props.navigation.navigate('SettingMenu');
-                                                                                                    this.setState(({ show }) => ({
-                                                                                                        show: !show,
-                                                                                                    }));
-                                                                                                }}
-                                                                                            >
-                                                                                                <Image style={{ width: 50, height: 50 }}
-                                                                                                    source={require('./../assets/images/sidemenu/page-sidemenu/setting.png')}
-                                                                                                />
-                                                                                            </TouchableWithoutFeedback>
-                                                                                        </View>
-                                                                                        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                                                                                            <TouchableWithoutFeedback
-                                                                                                onPress={() => {
-                                                                                                    this.props.navigation.navigate('HelpMenu');
-                                                                                                    this.setState(({ show }) => ({
-                                                                                                        show: !show,
-                                                                                                    }));
-                                                                                                }}>
-                                                                                                <Image style={{ width: 50, height: 50 }}
-                                                                                                    source={require('./../assets/images/sidemenu/page-sidemenu/bantuan.png')}
-                                                                                                />
-                                                                                            </TouchableWithoutFeedback>
-                                                                                        </View>
-                                                                                    </View>
-                                                                                </View>
                                                                                 {
                                                                                     idCrafter ?
-                                                                                        <View style={{ height: 200 }}>
+                                                                                        <View style={{ height: 200, marginTop: 50 }}>
                                                                                             <View style={{ flexDirection: 'row' }}>
                                                                                                 <View style={{ width: '50%', justifyContent: 'center', alignItems: 'center' }}>
                                                                                                     <Image
@@ -1309,8 +1039,10 @@ export class DashboardPage extends React.Component {
                                                                                                                 this.setState(({ show }) => ({
                                                                                                                     show: !show,
                                                                                                                 }), () => {
-                                                                                                                    this.props.navigation.navigate('MenuCrafter', { itemId: this.state.idUser,
-                                                                                                                        crafter_Id: this.state.idCrafter });
+                                                                                                                    this.props.navigation.navigate('MenuCrafter', {
+                                                                                                                        itemId: this.state.idUser,
+                                                                                                                        crafter_Id: this.state.idCrafter
+                                                                                                                    });
                                                                                                                 });
                                                                                                             }}
                                                                                                         >
@@ -1471,31 +1203,30 @@ const styles = StyleSheet.create({
         marginTop: 10,
         justifyContent: 'center',
         alignItems: 'center',
-        height: 175,
+        height: 300,
         width: '95%'
     },
     containerPhoto: {
-        flex: 1,
-        width: 125,
-        justifyContent: 'center',
-        alignItems: 'center'
+        // flex: 1,
+        // width: 125,
+        // justifyContent: 'center',
+        // alignItems: 'center'
     },
     containerInsideProfileOne: {
-        width: 130,
-        height: 180,
+        width: '100%',
+        height: 150,
         justifyContent: 'center',
         alignItems: 'center',
-        marginLeft: 10
     },
     containerInsideProfileTwo: {
         flex: 1,
-        height: 160,
+        // height: 160,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     containerUp: {
         width: 230,
-        height: 60
+        height: 40,
     },
     containerMiddleProfileTwo: {
         width: 230,
@@ -1503,7 +1234,7 @@ const styles = StyleSheet.create({
     },
     containerBottomProfileTwo: {
         width: 230,
-        height: 50
+        height: 40,
     },
     containerUploadIdea: {
         // flex: 1,
@@ -1521,8 +1252,8 @@ const styles = StyleSheet.create({
         resizeMode: 'cover'
     },
     profileImage: {
-        height: 110,
-        width: 110,
+        height: 130,
+        width: 130,
         borderRadius: 100
     },
     icons: {

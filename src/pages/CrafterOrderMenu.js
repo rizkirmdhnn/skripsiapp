@@ -65,15 +65,15 @@ export class CrafterOrderMenuPage extends React.Component {
     render() {
         const { categoryId } = this.state
         return (
-            <ScrollView style={{ flex: 1, backgroundColor: '#e5e5e5' }} showsVerticalScrollIndicator={false}>
-                <View style={{ flex: 1, height: 275, }}>
+            // <ScrollView style={{ flex: 1, backgroundColor: '#e5e5e5' }} showsVerticalScrollIndicator={false}>
+                <View style={{ flex: 1 }}>
 
-                    <View style={{ flex: 1, flexDirection: 'row', marginTop: 5, marginLeft: 10, marginRight: 10, justifyContent: 'center', borderRadius: 10, }}>
+                    <View style={{ height: 150, flexDirection: 'row', marginTop: 5, marginLeft: 10, marginRight: 10, justifyContent: 'center', borderRadius: 100 }}>
                         <TouchableOpacity style={{ flex: 1 }}
                             onPress={() => this.props.navigation.navigate('searchOrder', { type_order: 'Custom Order', categoryId: categoryId })}
                         >
                             <ImageBackground
-                                style={{ flex: 1, width: '100%', borderRadius: 100, flexDirection: 'row', }}
+                                style={{ flex: 1, width: '100%', flexDirection: 'row', }}
                                 source={require('./../assets/images/bg_custom.png')}
                                 resizeMode='stretch'
                             >
@@ -87,7 +87,7 @@ export class CrafterOrderMenuPage extends React.Component {
                     </View>
 
 
-                    <View style={{ flex: 1, flexDirection: 'row', marginTop: 5, marginLeft: 10, marginRight: 10, justifyContent: 'center', borderRadius: 10, }}>
+                    {/* <View style={{ flex: 1, flexDirection: 'row', marginTop: 5, marginLeft: 10, marginRight: 10, justifyContent: 'center', borderRadius: 10, }}>
                         <TouchableOpacity style={{ flex: 1 }}
                             onPress={() => this.props.navigation.navigate('searchOrder', { type_order: 'Capture n Get', categoryId: categoryId })}
                         >
@@ -121,11 +121,10 @@ export class CrafterOrderMenuPage extends React.Component {
                                 <View style={{ flex: 1 }} />
                             </ImageBackground>
                         </TouchableOpacity>
-                    </View>
+                    </View> */}
 
                 </View>
 
-            </ScrollView >
 
         );
     }

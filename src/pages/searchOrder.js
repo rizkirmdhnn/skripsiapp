@@ -72,14 +72,9 @@ export class searchOrderPage extends React.Component {
                             />
                         </View>
                         <View style={{ flex: 1, height: 110, width: '100%', flexDirection: 'row', position: 'absolute', top: 135, backgroundColor: 'rgba(0,0,0,0.6)' }} >
-                            <Image
-                                style={{ width: 15, height: 18, marginTop: 5, marginLeft: 10, marginRight: 5, marginTop: 7 }}
-                                source={require('./../assets/images/location_icon.png')}
-                                resizeMode='contain'
-                            />
-                            <View style={{ flex: 1 }}>
-                                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'white' }}>{data.item.ApapunUsersAddress.ApapunProvinces.name}</Text>
-                                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'white' }}>{data.item.ApapunUsersAddress.ApapunDistricts.name}</Text>
+                            <View style={{ flex: 1, marginLeft: 5, marginTop: 2 }}>
+                                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'white' }}>{data.item.nameProduct}</Text>
+                                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'white' }}>{data.item.ApapunUsers.username}</Text>
                             </View>
                         </View>
                     </View>

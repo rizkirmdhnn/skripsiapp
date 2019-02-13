@@ -110,12 +110,12 @@ export class LoginPage extends React.Component {
 		return (
 			<View style={styles.container}>
 				<ScrollView keyboardShouldPersistTaps='always' showsVerticalScrollIndicator={false}>
-					<Image
-						style={{ width: 220, height: 100, }}
-						source={require('./../assets/images/logotext.png')}
+					{/* <Image
+						style={{ width: '100%', height: 100, }}
+						source={require('./../assets/images/ic_logo2.png')}
 						resizeMode='contain'
-					/>
-					<View style={{ width: '100%', height: 75 }}>
+					/> */}
+					<View style={{ width: '100%', height: 75, marginTop: 20 }}>
 						<Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', paddingTop: 10 }}>HI, WELCOME!</Text>
 						<Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', paddingTop: 10 }}>Silahkan masukan Email/ID akun yang sudah kamu daftarkan</Text>
 					</View>

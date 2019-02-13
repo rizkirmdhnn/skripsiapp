@@ -118,7 +118,7 @@ export class EditProfileCrafterPage extends React.Component {
                                 title='Furniture & Appliances'
                                 containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
                             />
-                            <CheckBox
+                            {/* <CheckBox
                                 fontFamily='Quicksand-Regular'
                                 title='Beauty'
                                 containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
@@ -127,7 +127,7 @@ export class EditProfileCrafterPage extends React.Component {
                                 fontFamily='Quicksand-Regular'
                                 title='Hobbies & Toys'
                                 containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
-                            />
+                            /> */}
                         </View>
                         <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', marginTop: 10 }}>Jasa Pengiriman Pribadi</Text>
                         <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', marginTop: 5 }}>

@@ -239,7 +239,7 @@ export class ProfileBuyerPage extends React.Component {
 
 
 
-                                    <View style={styles.containerSecondForm}>
+                                    {/* <View style={styles.containerSecondForm}>
 
 
                                         <View style={{ flexDirection: 'row', height: 70, width: '85%', }}>
@@ -278,7 +278,7 @@ export class ProfileBuyerPage extends React.Component {
 
                                         </View>
 
-                                    </View>
+                                    </View> */}
 
 
 

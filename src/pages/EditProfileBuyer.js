@@ -133,7 +133,7 @@ export class EditProfileBuyerPage extends React.Component {
 
                 </View>
 
-                <View style={{ flex: 1, height: 125, backgroundColor: 'white', paddingTop: 20 }}>
+                {/* <View style={{ flex: 1, height: 125, backgroundColor: 'white', paddingTop: 20 }}>
                     <View style={{ flex: 1, flexDirection: 'column', marginRight: 30, marginLeft: 30 }}>
                         <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Quicksand-Bold', }}>Hubungkan Dengan Facebook</Text>
                         <View style={{ flexDirection: 'row', flex: 1, alignItems: 'center', paddingLeft: 25 }}>
@@ -146,7 +146,7 @@ export class EditProfileBuyerPage extends React.Component {
                             </View>
                         </View>
                     </View>
-                </View>
+                </View> */}
 
                 <View style={{ flex: 1, height: 50, flexDirection: 'row', backgroundColor: '#ef1c25', alignItems: 'center', justifyContent: 'center', marginRight: 30, marginLeft: 30, borderRadius: 100, alignItems: 'center', marginTop: 25 }}>
                     <TouchableOpacity

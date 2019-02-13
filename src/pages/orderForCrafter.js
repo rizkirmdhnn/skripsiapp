@@ -147,7 +147,7 @@ export class OrderForCrafterPage extends React.Component {
             >
                 <Image
                     style={styles.item}
-                    source={{ uri: `${IPSERVER}/ApapunStorageImages/images/download/${data.item === undefined ? 'https://www.coastalsocks.com.ng/wp-content/uploads/2014/04/default-avatar.png' : data.item.name}` }}
+                    source={{ uri: `${IPSERVER}/ApapunStorageImages/images/download/${data.item === undefined ? 'https://www.coastalsocks.com.ng/wp-content/uploads/2014/04/default-avatar.png' : 'https://www.coastalsocks.com.ng/wp-content/uploads/2014/04/default-avatar.png'}` }}
                 />
             </View>
         )
@@ -159,7 +159,7 @@ export class OrderForCrafterPage extends React.Component {
         return (
             <View>
                 <Image
-                    source={{ uri: `${IPSERVER}/ApapunStorageImages/images/download/${data.item === undefined ? 'https://www.coastalsocks.com.ng/wp-content/uploads/2014/04/default-avatar.png' : data.item.name}` }}
+                    source={{ uri: `${IPSERVER}/ApapunStorageImages/images/download/${data.item === undefined ? 'https://www.coastalsocks.com.ng/wp-content/uploads/2014/04/default-avatar.png' : 'https://www.coastalsocks.com.ng/wp-content/uploads/2014/04/default-avatar.png'}` }}
                     style={{ width: '100%', height: 200 }}
                     resizeMode='stretch'
                 />
@@ -393,8 +393,8 @@ export class OrderForCrafterPage extends React.Component {
                 <View style={{ height: 120, backgroundColor: '#fff', marginLeft: 5, marginRight: 5, marginTop: 5 }}>
                     <Text style={{ fontFamily: 'Quicksand-Bold', marginTop: 8, marginLeft: 5 }}>{detailOrderData.ApapunUsersAddress === undefined ? '-' : detailOrderData.ApapunUsersAddress.type} {'\n'}</Text>
                     <Text style={{ fontFamily: 'Quicksand-Regular', marginLeft: 5 }}>Penerima: <Text style={{ fontFamily: 'Quicksand-Bold' }}>{detailOrderData.ApapunUsersAddress === undefined ? '-' : detailOrderData.ApapunUsersAddress.addressOwner} {'\n'}{'\n'}</Text>
-                        <Text style={{ fontFamily: 'Quicksand-Regular', marginLeft: 5 }}>{detailOrderData.ApapunUsers === undefined ? '-' : detailOrderData.ApapunUsers.noPhone} {'\n'}{detailOrderData.ApapunUsersAddress === undefined ? '-' : detailOrderData.ApapunUsersAddress.addressTxt},{'\n'}
-                            {detailOrderData.ApapunUsersAddress === undefined ? '-' : detailOrderData.ApapunUsersAddress.ApapunProvinces.name}, {detailOrderData.ApapunUsersAddress === undefined ? '-' : detailOrderData.ApapunUsersAddress.ApapunRegencies.name}, {detailOrderData.ApapunUsersAddress === undefined ? '-' : detailOrderData.ApapunUsersAddress.ApapunDistricts.name} </Text></Text>
+                        {/* <Text style={{ fontFamily: 'Quicksand-Regular', marginLeft: 5 }}>{detailOrderData.ApapunUsers === undefined ? '-' : detailOrderData.ApapunUsers.noPhone} {'\n'}{detailOrderData.ApapunUsersAddress === undefined ? '-' : detailOrderData.ApapunUsersAddress.addressTxt},{'\n'} {detailOrderData.ApapunUsersAddress === undefined ? '-' : detailOrderData.ApapunUsersAddress.ApapunProvinces.name}, {detailOrderData.ApapunUsersAddress === undefined ? '-' : detailOrderData.ApapunUsersAddress.ApapunRegencies.name}, {detailOrderData.ApapunUsersAddress === undefined ? '-' : detailOrderData.ApapunUsersAddress.ApapunDistricts.name} </Text> */}
+                        </Text>
                 </View>
                 <View style={{ flex: 1, marginTop: 10, marginLeft: 5, paddingRight: 5, paddingLeft: 5, backgroundColor: '#fff' }}>
                     <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15 }}>Harga</Text>
